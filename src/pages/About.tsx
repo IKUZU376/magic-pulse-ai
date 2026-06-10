@@ -10,6 +10,26 @@ import {
 } from 'lucide-react';
 
 export default function About() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.05
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: 'spring', stiffness: 100, damping: 20 } 
+    }
+  };
+
   const coreValues = [
     {
       title: "Scientific Rigor First",
@@ -142,12 +162,19 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {coreValues.map((val, index) => {
               const Icon = val.icon;
               return (
-                <div 
+                <motion.div 
                   key={index}
+                  variants={itemVariants}
                   className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 flex flex-col gap-4 hover-lift"
                 >
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${val.color}`}>
@@ -155,10 +182,10 @@ export default function About() {
                   </div>
                   <h3 className="font-display font-semibold text-base text-navy-dark">{val.title}</h3>
                   <p className="font-body-md text-xs text-navy-dark/60 leading-relaxed">{val.desc}</p>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         {/* Leadership Grid */}
@@ -176,10 +203,17 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {leaders.map((lead, index) => (
-              <div 
+              <motion.div 
                 key={index}
+                variants={itemVariants}
                 className="bg-white rounded-2xl overflow-hidden soft-shadow border border-navy-dark/5 group hover-lift"
               >
                 {/* Visual frame size container */}
@@ -206,9 +240,9 @@ export default function About() {
                     {lead.bio}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
 

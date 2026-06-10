@@ -7,6 +7,7 @@ import Solutions from './pages/Solutions';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import { ArrowUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -48,27 +49,61 @@ export default function App() {
 
       {/* Main Pages Switcher */}
       <main id="main-content-stream" className="flex-grow">
-        {currentPage === 'home' && (
-          <Home 
-            setCurrentPage={setCurrentPage} 
-            setSelectedSolutionSection={handleSelectSolutionSection} 
-          />
-        )}
-        
-        {currentPage === 'solutions' && (
-          <Solutions 
-            setCurrentPage={setCurrentPage} 
-            selectedSolutionSection={selectedSolutionSection} 
-          />
-        )}
-        
-        {currentPage === 'about' && (
-          <About />
-        )}
-        
-        {currentPage === 'contact' && (
-          <Contact />
-        )}
+        <AnimatePresence mode="wait">
+          {currentPage === 'home' && (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              <Home 
+                setCurrentPage={setCurrentPage} 
+                setSelectedSolutionSection={handleSelectSolutionSection} 
+              />
+            </motion.div>
+          )}
+          
+          {currentPage === 'solutions' && (
+            <motion.div
+              key="solutions"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              <Solutions 
+                setCurrentPage={setCurrentPage} 
+                selectedSolutionSection={selectedSolutionSection} 
+              />
+            </motion.div>
+          )}
+          
+          {currentPage === 'about' && (
+            <motion.div
+              key="about"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              <About />
+            </motion.div>
+          )}
+          
+          {currentPage === 'contact' && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+            >
+              <Contact />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
       {/* Global Corporate Footer */}

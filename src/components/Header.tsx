@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Page } from '../types';
+import { motion } from 'motion/react';
 
 interface HeaderProps {
   currentPage: Page;
@@ -62,15 +63,19 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
             <button
               key={item.value}
               onClick={() => setCurrentPage(item.value)}
-              className={`relative font-display font-medium text-sm transition-all duration-300 py-2 hover:text-teal-accent select-none ${
+              className={`relative font-display font-medium text-sm transition-colors duration-300 py-2 hover:text-teal-accent select-none cursor-pointer ${
                 currentPage === item.value 
                   ? 'text-teal-accent font-semibold' 
-                  : 'text-navy-dark/70 hover:opacity-100'
+                  : 'text-navy-dark/70'
               }`}
             >
               {item.label}
               {currentPage === item.value && (
-                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-teal-accent rounded-full" />
+                <motion.span 
+                  layoutId="activeNavUnderline"
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-teal-accent rounded-full" 
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
               )}
             </button>
           ))}
@@ -78,13 +83,15 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
 
         {/* Global CTA button (Request Demo / Get Started) */}
         <div className="hidden md:flex items-center">
-          <button 
+          <motion.button 
             onClick={() => setCurrentPage('contact')}
-            className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-1.5 cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-colors duration-300 shadow-sm flex items-center gap-1.5 cursor-pointer"
           >
             Request Demo
             <ArrowUpRight className="w-3.5 h-3.5 text-teal-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Burger Menu Button */}
@@ -118,16 +125,18 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
               </button>
             ))}
             
-            <button
+            <motion.button
               onClick={() => {
                 setCurrentPage('contact');
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full mt-4 bg-teal-accent text-navy-dark font-display font-semibold text-center py-4 rounded-lg hover:opacity-90 transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full mt-4 bg-teal-accent text-navy-dark font-display font-semibold text-center py-4 rounded-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer"
             >
               Request Demo
               <ArrowUpRight className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
         </div>
       )}
