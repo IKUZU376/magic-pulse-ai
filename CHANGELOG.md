@@ -9,3 +9,15 @@
 - About page completed.
 - Contact page completed.
 - Project running locally using Vite.
+## Version 1.1
+
+### Localization & Polish
+
+- Localized company offices to India.
+- Updated leadership team names.
+- Replaced international phone numbers and emails.
+- Removed military terminology.
+- Standardized hover animations and button transitions.
+- Added hover-lift utility class.
+- Improved interaction consistency.
+- Verified production build successfully.
