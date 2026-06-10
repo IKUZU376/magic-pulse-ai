@@ -19,7 +19,14 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 glass-panel border-b border-navy-dark/5">
+    <nav
+  className="fixed top-0 left-0 w-full z-50"
+  style={{
+    background: "rgba(255,255,255,0.75)",
+    backdropFilter: "blur(20px)",
+    WebkitBackdropFilter: "blur(20px)"
+  }}
+>
       <div className="max-w-[1280px] mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
         
         {/* Logo and Brand Name */}
