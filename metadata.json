@@ -1,0 +1,6 @@
+{
+  "name": "Magic Pulse AI",
+  "description": "Premium healthcare AI website for Magic Pulse AI Technologies Pvt. Ltd.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
