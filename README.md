@@ -1,20 +1,73 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Magic Pulse AI Technologies Pvt. Ltd.
 
-# Run and deploy your AI Studio app
+Premium enterprise healthcare AI website built with React, TypeScript, Vite and Framer Motion.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/aef4a03a-bf31-4c89-b419-f1c20e4ad9ce
+## Features
+
+- Responsive multi-page interface
+- Premium animations inspired by Apple, Stripe and Vercel
+- Indian localization
+- Interactive statistics with CountUp animations
+- Functional contact form powered by Web3Forms
+- SEO metadata and favicon support
+- Clean Git branching workflow
+
+---
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Framer Motion
+- CSS
+- Web3Forms
+
+---
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Production Build
+
+```bash
+npm run build
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_WEB3FORMS_ACCESS_KEY=your_key_here
+```
+
+---
+
+## Project Versions
+
+### v1.0
+Initial Magic Pulse AI website
+
+### v1.1
+Localization and UI refinement
+
+### v1.2
+Branding and metadata improvements
+
+### v1.3
+Premium animations and contact backend
+
+---
+
+Built by Saumitra Patil.
