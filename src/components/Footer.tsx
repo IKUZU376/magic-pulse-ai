@@ -126,13 +126,13 @@ export default function Footer({ setCurrentPage }: FooterProps) {
               Global Support
             </h4>
             <p className="font-body-md text-sm text-white/50">
-              Operating 24/7/365 across Singapore, Bangalore, and London data-silos.
+              Operating 24/7/365 across Bengaluru, Mumbai, Hyderabad, and Pune data-silos.
             </p>
             <div className="font-body-md text-sm text-white/80 font-medium">
-              E-mail: support@magicpulseai.com
+              E-mail: contact@magicpulseai.in
             </div>
             <div className="font-body-md text-sm text-white/80 font-medium">
-              Phone: +1 (800) 555-0199
+              Phone: +91 80 4933 6000
             </div>
           </div>
 

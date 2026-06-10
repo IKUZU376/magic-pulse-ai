@@ -39,26 +39,26 @@ export default function About() {
 
   const leaders = [
     {
-      name: "Dr. Sarah Chen",
+      name: "Dr. Aditi Kulkarni",
       role: "Founder & Chief Executive Officer",
       bio: "Ex-Stanford Clinical Informatics, previously leading research divisions at DeepMind Medical. Dedicated to deploying safe, trustworthy intelligence globally.",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDoSIar1m7jswHDznRAUuqHIZW-7lU7XL0Iy33OaTcYQSYgtLb81yDXTRuSTW6AyM9y87XDkkhdt4OPKRn4iALRkKoHEeHc0LCGccuJbg2jwwzxgCHHzBfPJEKP14b-x6qPUDMMZPPDNDgYsaPj-sj-fzvW1jn9peKp91dJCHjKC1wPLbkMr0DiABjt1jIePe5mDQ4Bv0G8X-06za5FjuMnuIEpTC9Zrj9RqsSAqeIvq7RTUGJoXaxA4ImAd3zFwKoGdFa1MRcPnsw"
     },
     {
-      name: "Marcus Reid",
+      name: "Rohan Deshmukh",
       role: "Chief Technology Officer",
       bio: "Former Principal Architect of Stripe's distributed core infrastructure. Specialist in high-performance computing clusters and zero-leak system security.",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDpD1cnKFEDccpNTdPwTCAxKsuEBZfezMCK2aKEvhFYb8QeO2g1_AhNgsJOEZQbVgaqFi4EV7ERkme3-3if7-KwJnW975G7xV4S4GmqmZuKAphmW6M9CYwAWZStJYISQZBgPhUqr08bNeTkToCiK7RY2-Rsxv9cJYF9vex2fy9w32yUEdVqgWy7PQd6GzZEspdu3K6Y4IPUGeKLUEiDywwNdGVDE0FqVisiSzFKsZSnv7sm09rP9mNAK1_26x__-uaTUeQYn4m1nrk"
     },
     {
-      name: "Dr. Elena Rostova",
+      name: "Dr. Ananya Mehta",
       role: "Chief Medical Officer",
       bio: "Renowned neuro-radiologist and clinical trial investigator. Guides model development pipelines to guarantee direct utility inside high-pressure ICUs.",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2Crn3GO6u_hkQngGj3bAkNR7ORAsIXfACRoAZa8aD22dIeQL0RnVgfaDoNQROLQnTMoA_sEbIENDdEJy1mOu4k0U-HvRIndys8-TB6qU8dbEQ2HXc0gid_wTjw3EdCzIBZBUC96zla5kkhGHnObvulBw1OAPKBsZvt83N-Fw82Y0_d_UBwwEaZc4Gbrzh_Lkkx8_TNEXH-gfta51DJOnYwcgGe8rSQVbooDxBdPiQnza2gPkIZnuJu1mo4EXCLvv2xwkZMROeAPE"
     },
     {
-      name: "David Kim",
-      role: "Chief Operating Officer",
+      name: "Vikram Iyer",
+      role: "Chief Operations Officer",
       bio: "Silo scaling leader, ex-operations lead for multinational hospital chains. Expert in coordinating procurement, slates compliance, and on-premises integrations.",
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDe8bnAYV-_zFjz4M9Cipt9_k0Q8LTZSRAv5L1Uwql5MtSjO5aQ-6r81YjUp9KLdzQhAOykZ8yvJ76Gz2jqUp6yDb7c1LJPazMFI5AMEGFKMgaZmVcRRzXrygMx-6JYBt7Bui_TjH28DWkBaA-Do3U3SyFw4rgNv8pqJQmtXE0z2sYpYi7ZJf-SjZVvfHztJlazuGSO2vNjx7ETy_vfmfInk55xGoPu1U7jyzqVa56TjG_upIdyH_b7OKLdtbp1JzEsaXwDDQXIoDs"
     }

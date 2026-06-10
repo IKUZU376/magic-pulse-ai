@@ -46,22 +46,28 @@ export default function Contact() {
 
   const offices = [
     {
-      country: "Singapore HQ",
-      address: "79 Ayer Rajah Crescent, #04-10, LaunchPad @ One-North, Singapore 139951",
-      phone: "+65 6777 9102",
+      country: "Bengaluru HQ",
+      address: "Level 11, Prestige Trade Tower, Palace Road, High Grounds, Bengaluru, Karnataka 560001",
+      phone: "+91 80 4933 6000",
       badge: "Clinical Sandbox Lab"
     },
     {
-      country: "Bangalore",
-      address: "Level 11, Prestige Trade Tower, Palace Road, High Grounds, Bangalore 560001",
-      phone: "+91 80 4933 6000",
-      badge: "Engineering Office"
+      country: "Mumbai Operations Center",
+      address: "Naman Centre, Bandra Kurla Complex, Bandra East, Mumbai, Maharashtra 400051",
+      phone: "+91 22 6659 5000",
+      badge: "Operations Hub"
     },
     {
-      country: "London",
-      address: "Imperial College Translation & Innovation Hub, White City, London W12 0BZ",
-      phone: "+44 20 7594 8888",
-      badge: "Regulatory & Research"
+      country: "Hyderabad AI Research Lab",
+      address: "Building 20, Mindspace Cyberabad, Madhapur, Hyderabad, Telangana 500081",
+      phone: "+91 40 4033 9000",
+      badge: "Research & Development"
+    },
+    {
+      country: "Pune Engineering Office",
+      address: "Business Bay, Airport Road, Yerwada, Pune, Maharashtra 411006",
+      phone: "+91 20 6702 1000",
+      badge: "Engineering Office"
     }
   ];
 
@@ -123,7 +129,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-display font-semibold text-xs text-white/50 uppercase tracking-wider">Secure Email</h4>
-                    <p className="font-sans text-sm text-white/90 mt-1">proposals@magicpulseai.com</p>
+                    <p className="font-sans text-sm text-white/90 mt-1">contact@magicpulseai.in</p>
                   </div>
                 </div>
 
@@ -133,8 +139,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-display font-semibold text-xs text-white/50 uppercase tracking-wider">Inquiry Line</h4>
-                    <p className="font-sans text-sm text-white/90 mt-1">+1 (800) 555-0199 (US Desk)</p>
-                    <p className="font-sans text-sm text-white/90 mt-0.5">+65 6777 9102 (APAC Desk)</p>
+                    <p className="font-sans text-sm text-white/90 mt-1">+91 80 4933 6000 (Bengaluru HQ)</p>
+                    <p className="font-sans text-sm text-white/90 mt-0.5">+91 22 6659 5000 (Mumbai Desk)</p>
                   </div>
                 </div>
 
@@ -252,7 +258,7 @@ export default function Contact() {
                     {/* Submit confirmation */}
                     <button 
                       type="submit"
-                      className="w-full bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-all active:scale-98"
+                      className="w-full bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98]"
                     >
                       Transmit Proposal Request
                     </button>
@@ -275,7 +281,7 @@ export default function Contact() {
                     </div>
                     <button 
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-6 bg-slate-100 hover:bg-slate-200 text-navy-dark font-display font-semibold text-xs uppercase py-3 px-6 rounded-lg cursor-pointer transition-colors"
+                      className="mt-6 bg-slate-100 hover:bg-slate-200 text-navy-dark font-display font-semibold text-xs uppercase py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98]"
                     >
                       Send Another Inquiry
                     </button>

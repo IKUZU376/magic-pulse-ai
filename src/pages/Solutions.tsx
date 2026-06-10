@@ -66,7 +66,7 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
         "Dynamic segment maps superimposed on DICOM image structures.",
         "Zero-latency background queue pre-processing before physician login.",
         "Automatic clinical text narrative summary drafting following PACS review.",
-        "Military-grade sandboxed compliance isolated from public API wrappers."
+        "Secure Clinical Data Isolation compliance isolated from public API wrappers."
       ],
       benchmark: "Processed over 4.2 million radiology volumes in verified double-blind clinical evaluations."
     },
@@ -155,7 +155,7 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
             Designed for Clinical Safety & Mathematical Rigor
           </h1>
           <p className="font-body-md text-sm sm:text-base text-navy-dark/70 leading-relaxed">
-            We operate on a zero-compromise approach to medical AI. Select a solution module below to explore its architecture, clinical benchmarks, and telemetry specifications.
+            We operate on a Responsible and Reliable Medical AI framework. Select a solution module below to explore its architecture, clinical benchmarks, and telemetry specifications.
           </p>
         </div>
 
@@ -261,7 +261,7 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
 
               <button 
                 onClick={() => setCurrentPage('contact')}
-                className="mt-4 bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                className="mt-4 bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 cursor-pointer"
               >
                 Inquire About Custom Pilot
                 <Plus className="w-3.5 h-3.5 text-teal-accent" />

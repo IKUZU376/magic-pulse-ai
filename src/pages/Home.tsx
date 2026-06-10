@@ -80,7 +80,7 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <button 
                 onClick={() => setCurrentPage('solutions')}
-                className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 Explore Solutions Dashboard
                 <ArrowRight className="w-4 h-4 text-teal-accent transition-transform duration-300 group-hover:translate-x-1" />
@@ -88,7 +88,7 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
               
               <button 
                 onClick={() => setCurrentPage('contact')}
-                className="bg-white hover:bg-slate-50 border border-slate-200 text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 shadow-sm flex items-center justify-center cursor-pointer active:scale-95"
+                className="bg-white hover:bg-slate-50 border border-slate-200 text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center cursor-pointer"
               >
                 Request Custom Sandbox
               </button>
@@ -294,7 +294,7 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
           <div className="mt-12 flex justify-center">
             <button 
               onClick={() => setCurrentPage('solutions')}
-              className="bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+              className="bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-2 cursor-pointer"
             >
               Analyze All 5 Core Solutions
               <ArrowRight className="w-3.5 h-3.5" />
@@ -333,7 +333,7 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
 
               <div>
                 <h3 className="font-display font-semibold text-2xl mb-3">
-                  Defense-Grade Security Credentials
+                  Enterprise Healthcare Security Credentials
                 </h3>
                 <p className="font-body-md text-white/70 max-w-xl text-sm leading-relaxed mb-6">
                   Magic Pulse operates inside siloed cloud VPC enclosures. Patient Health Information (PHI) is isolated locally, encrypted at rest via AES-256 standards, and compliant with all federal HIPAA policies.
@@ -547,13 +547,13 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
             <button 
               onClick={() => setCurrentPage('contact')}
-              className="bg-teal-accent text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-md shadow-teal-accent/20 cursor-pointer"
+              className="bg-teal-accent text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl hover:opacity-90 transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-teal-accent/20 cursor-pointer"
             >
               Request Technical Pilot Briefing
             </button>
             <button 
               onClick={() => setCurrentPage('about')}
-              className="bg-white/10 hover:bg-white/20 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all cursor-pointer border border-white/15"
+              className="bg-white/10 hover:bg-white/20 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] border border-white/15 cursor-pointer"
             >
               Learn about our Research
             </button>

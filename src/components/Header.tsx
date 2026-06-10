@@ -80,9 +80,9 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
         <div className="hidden md:flex items-center">
           <button 
             onClick={() => setCurrentPage('contact')}
-            className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-all duration-300 shadow-sm active:scale-95 flex items-center gap-1.5 cursor-pointer"
+            className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-1.5 cursor-pointer"
           >
-            Get Started
+            Request Demo
             <ArrowUpRight className="w-3.5 h-3.5 text-teal-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
@@ -123,9 +123,9 @@ export default function Header({ currentPage, setCurrentPage }: HeaderProps) {
                 setCurrentPage('contact');
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full mt-4 bg-teal-accent text-navy-dark font-display font-semibold text-center py-4 rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-1.5"
+              className="w-full mt-4 bg-teal-accent text-navy-dark font-display font-semibold text-center py-4 rounded-lg hover:opacity-90 transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              Get Started
+              Request Demo
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
