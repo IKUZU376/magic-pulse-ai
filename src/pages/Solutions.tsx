@@ -17,6 +17,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Page } from '../types';
+import CountUp from '../components/CountUp';
 
 interface SolutionsProps {
   setCurrentPage: (page: Page) => void;
@@ -165,9 +166,11 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
             const Icon = tab.icon;
             const isSelected = activeTab === tab.id;
             return (
-              <button
+              <motion.button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className={`flex items-center gap-2.5 font-display font-semibold text-xs py-3 px-5 rounded-xl transition-all duration-300 cursor-pointer ${
                   isSelected 
                     ? 'bg-navy-dark text-white shadow-md' 
@@ -176,7 +179,7 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
               >
                 <Icon className={`w-4 h-4 ${isSelected ? 'text-teal-accent' : 'text-navy-dark/50'}`} />
                 {tab.name}
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -215,7 +218,11 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
                     Core Target Metric
                   </span>
                   <span className="font-display font-extrabold text-4xl text-navy-dark block mt-1">
-                    {currentSol.metricValue}
+                    {activeTab === 'diagnostics' && <CountUp value={98.4} decimals={1} suffix="%" />}
+                    {activeTab === 'analytics' && <CountUp value={6} suffix=" Hours" />}
+                    {activeTab === 'monitoring' && <CountUp value={10} suffix="k+" />}
+                    {activeTab === 'automation' && <CountUp value={82} suffix="%" />}
+                    {activeTab === 'custom' && <CountUp value={100} suffix="%" />}
                   </span>
                   <p className="font-body-md text-xs text-navy-dark/50 mt-1">
                     {currentSol.metricLabel}
@@ -259,13 +266,15 @@ export default function Solutions({ setCurrentPage, selectedSolutionSection }: S
                 </span>
               </div>
 
-              <button 
+              <motion.button 
                 onClick={() => setCurrentPage('contact')}
-                className="mt-4 bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-4 bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm flex items-center gap-2 cursor-pointer"
               >
                 Inquire About Custom Pilot
                 <Plus className="w-3.5 h-3.5 text-teal-accent" />
-              </button>
+              </motion.button>
 
             </div>
 

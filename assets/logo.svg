@@ -1,0 +1,20 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Backing stylized 'M' in Navy -->
+  <path 
+    d="M20 75V25C20 22.24 22.24 20 25 21.5L46.5 45.5C48.5 47.7 51.5 47.7 53.5 45.5L75 21.5C77.76 20 80 22.24 80 25V75" 
+    stroke="#0B132B" 
+    stroke-width="11" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  <!-- Foreground Heartbeat pulse in Teal Accent -->
+  <path 
+    d="M12 48H32L41 24L50 76L59 36L66 56L72 44L78 48H88" 
+    stroke="#00C2A8" 
+    stroke-width="7" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  <!-- Glowing cyan indicator dot -->
+  <circle cx="88" cy="48" r="3.5" fill="#4CC9F0" />
+</svg>

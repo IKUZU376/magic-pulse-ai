@@ -15,6 +15,7 @@ import {
   UserCheck
 } from 'lucide-react';
 import { Page } from '../types';
+import CountUp from '../components/CountUp';
 
 interface HomeProps {
   setCurrentPage: (page: Page) => void;
@@ -35,18 +36,18 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
+        staggerChildren: 0.1,
+        delayChildren: 0.05
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 15 },
     show: { 
       opacity: 1, 
       y: 0, 
-      transition: { type: 'spring', stiffness: 80, damping: 18 } 
+      transition: { type: 'spring', stiffness: 100, damping: 20 } 
     }
   };
 
@@ -61,39 +62,48 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
         <div className="max-w-[1280px] mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full z-10">
           
           {/* Typography */}
-          <div className="lg:col-span-7 flex flex-col items-start gap-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-teal-accent/20">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="lg:col-span-7 flex flex-col items-start gap-8"
+          >
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-teal-accent/20">
               <span className="w-2.5 h-2.5 rounded-full bg-teal-accent animate-pulse" />
               <span className="font-display font-semibold text-xs tracking-wider text-navy-dark uppercase">
                 Enterprise Healthcare AI Engine
               </span>
-            </div>
+            </motion.div>
 
-            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-navy-dark leading-tight tracking-tight max-w-2xl">
+            <motion.h1 variants={itemVariants} className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-navy-dark leading-tight tracking-tight max-w-2xl">
               Pioneering the Next Era of <span className="text-teal-accent">Intelligent Clinical Care</span>.
-            </h1>
+            </motion.h1>
 
-            <p className="font-sans text-lg text-navy-dark/70 leading-relaxed max-w-xl">
+            <motion.p variants={itemVariants} className="font-sans text-lg text-navy-dark/70 leading-relaxed max-w-xl">
               Magic Pulse coordinates complex multi-silo diagnostic pipelines, tracks deterioration markers in real-time, and provides physicians with immediate, SOC 2 audited prognostic predictions.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button 
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <motion.button 
                 onClick={() => setCurrentPage('solutions')}
-                className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative bg-[#0B132B] hover:bg-neutral-900 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-colors duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 Explore Solutions Dashboard
                 <ArrowRight className="w-4 h-4 text-teal-accent transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              </motion.button>
               
-              <button 
+              <motion.button 
                 onClick={() => setCurrentPage('contact')}
-                className="bg-white hover:bg-slate-50 border border-slate-200 text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white hover:bg-slate-50 border border-slate-200 text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl transition-colors duration-300 shadow-sm flex items-center justify-center cursor-pointer"
               >
                 Request Custom Sandbox
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
 
           {/* Interactive Screen Device Mockup */}
           <div className="lg:col-span-5 relative w-full h-[500px] flex items-center justify-center">
@@ -161,52 +171,76 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
       </section>
 
       {/* 2. STATISTICS SECTION */}
-      <section className="py-20 bg-white border-y border-navy-dark/5">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-20 bg-white border-y border-navy-dark/5"
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-10"
+          >
             
             {/* Stat 1 */}
-            <div className="flex flex-col items-center text-center p-4">
+            <motion.div variants={itemVariants} className="flex flex-col items-center text-center p-4">
               <div className="w-12 h-12 bg-teal-accent/10 rounded-xl flex items-center justify-center text-teal-accent mb-4">
                 <Search className="w-6 h-6" />
               </div>
-              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">98%</h2>
+              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">
+                <CountUp value={98} suffix="%" />
+              </h2>
               <p className="font-display font-semibold text-sm text-navy-dark/50 mt-1.5 uppercase tracking-wider">Clinical Accuracy</p>
               <p className="font-body-md text-sm text-center text-navy-dark/60 mt-2 max-w-xs">
                 Exceeding standard clinical criteria across large-scale neurology and pulmonology cohorts.
               </p>
-            </div>
+            </motion.div>
 
             {/* Stat 2 */}
-            <div className="flex flex-col items-center text-center p-4 border-y md:border-y-0 md:border-x border-navy-dark/5">
+            <motion.div variants={itemVariants} className="flex flex-col items-center text-center p-4 border-y md:border-y-0 md:border-x border-navy-dark/5">
               <div className="w-12 h-12 bg-soft-purple/10 rounded-xl flex items-center justify-center text-soft-purple mb-4">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">40%</h2>
+              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">
+                <CountUp value={40} suffix="%" />
+              </h2>
               <p className="font-display font-semibold text-sm text-navy-dark/50 mt-1.5 uppercase tracking-wider">Diagnosis Acceleration</p>
               <p className="font-body-md text-sm text-center text-navy-dark/60 mt-2 max-w-xs">
                 Slashing radiologists' triage throughput waiting times significantly on complex MRI pipelines.
               </p>
-            </div>
+            </motion.div>
 
             {/* Stat 3 */}
-            <div className="flex flex-col items-center text-center p-4">
+            <motion.div variants={itemVariants} className="flex flex-col items-center text-center p-4">
               <div className="w-12 h-12 bg-electric-cyan/10 rounded-xl flex items-center justify-center text-electric-cyan mb-4">
                 <UserCheck className="w-6 h-6" />
               </div>
-              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">24h+</h2>
+              <h2 className="font-display font-bold text-5xl text-navy-dark tracking-tight">
+                <CountUp value={24} suffix="h+" />
+              </h2>
               <p className="font-display font-semibold text-sm text-navy-dark/50 mt-1.5 uppercase tracking-wider">Proactive Vitals Telemetry</p>
               <p className="font-body-md text-sm text-center text-navy-dark/60 mt-2 max-w-xs">
                 Safely streaming wearable sensor metrics directly to localized dashboard vaults globally.
               </p>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. SOLUTIONS PREVIEW */}
-      <section className="py-24">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-24"
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-8">
           
           <div className="flex flex-col items-start gap-4 mb-16 max-w-2xl">
@@ -221,10 +255,16 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             
             {/* Solution Block 1 */}
-            <div className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
               <div>
                 <span className="inline-block bg-[#00C2A8]/10 text-teal-accent font-display font-semibold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full mb-6">
                   PREVENTIVE & RADIOLOGY
@@ -236,17 +276,18 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   Real-time neural pipelines validating CT imaging, neuro-scans, and cardiac MRI slices with sub-millimeter precision.
                 </p>
               </div>
-              <button 
+              <motion.button 
                 onClick={() => navigateToSolution('diagnostics')}
+                whileHover={{ x: 3 }}
                 className="self-start inline-flex items-center gap-1.5 font-display font-bold text-xs text-teal-accent hover:opacity-85 cursor-pointer mt-4"
               >
                 View Benchmarks
                 <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Solution Block 2 */}
-            <div className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
               <div>
                 <span className="inline-block bg-[#7B61FF]/10 text-soft-purple font-display font-semibold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full mb-6">
                   PREDICTIVE FORESIGHT
@@ -258,17 +299,18 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   Early deterioration triggers alerting intensive care staff up to 6 hours before critical incidents and mapping patient flows.
                 </p>
               </div>
-              <button 
+              <motion.button 
                 onClick={() => navigateToSolution('analytics')}
+                whileHover={{ x: 3 }}
                 className="self-start inline-flex items-center gap-1.5 font-display font-bold text-xs text-soft-purple hover:opacity-85 cursor-pointer mt-4"
               >
                 View Benchmarks
                 <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Solution Block 3 */}
-            <div className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 soft-shadow border border-navy-dark/5 flex flex-col justify-between hover-lift">
               <div>
                 <span className="inline-block bg-[#4CC9F0]/10 text-electric-cyan font-display font-semibold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full mb-6">
                   CONTINUOUS TELEMETRY
@@ -280,32 +322,41 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   Secure wearable integration tracking real-time cardiac telemetry and biometric metadata across distributed hospital ecosystems.
                 </p>
               </div>
-              <button 
+              <motion.button 
                 onClick={() => navigateToSolution('monitoring')}
+                whileHover={{ x: 3 }}
                 className="self-start inline-flex items-center gap-1.5 font-display font-bold text-xs text-electric-cyan hover:opacity-85 cursor-pointer mt-4"
               >
                 View Benchmarks
                 <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           <div className="mt-12 flex justify-center">
-            <button 
+            <motion.button 
               onClick={() => setCurrentPage('solutions')}
-              className="bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center gap-2 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 px-8 rounded-xl shadow-sm flex items-center gap-2 cursor-pointer"
             >
               Analyze All 5 Core Solutions
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </motion.button>
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. WHY CHOOSE US (Bento Box Section) */}
-      <section className="py-24 bg-white border-y border-navy-dark/5">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-24 bg-white border-y border-navy-dark/5"
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-8">
           
           <div className="text-center mb-16 max-w-2xl mx-auto">
@@ -315,15 +366,21 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-navy-dark tracking-tight mt-3">
               Fusing Clinical Rigor with Enterprise Security Engineering
             </h2>
-            <p className="font-body-md text-navy-dark/70 mt-4 animate-fade-in">
+            <p className="font-body-md text-navy-dark/70 mt-4">
               We understand that clinical software cannot afford a single point of failure. Every component in Magic Pulse undergoes state-of-the-art SOC 2 Type II vetting.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-12 gap-8"
+          >
             
             {/* Highlighted Bento card (spans 7 cols) */}
-            <div className="md:col-span-7 bg-[#0B132B] text-white rounded-3xl p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between min-h-[320px]">
+            <motion.div variants={itemVariants} className="md:col-span-7 bg-[#0B132B] text-white rounded-3xl p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between min-h-[320px]">
               {/* Blur accent map */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-teal-accent/10 rounded-full blur-3xl" />
               
@@ -343,10 +400,10 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   <span className="font-display text-[10px] uppercase font-bold text-teal-accent">SOC 2 TYPE II APPROVED</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Bento card (spans 5 cols) */}
-            <div className="md:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-8 flex flex-col justify-between min-h-[320px] hover:bg-slate-100 transition-colors">
+            <motion.div variants={itemVariants} className="md:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-8 flex flex-col justify-between min-h-[320px] hover:bg-slate-100 transition-colors">
               <div className="w-12 h-12 bg-navy-dark/5 rounded-xl flex items-center justify-center mb-8">
                 <Cpu className="w-6 h-6 text-navy-dark" />
               </div>
@@ -359,10 +416,10 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   Our custom fine-tuned weights run on dedicated node layers, ensuring zero-latency, multi-tenant concurrency during peak diagnostic review hours.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Bento card (spans 5 cols) */}
-            <div className="md:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-8 flex flex-col justify-between min-h-[320px] hover:bg-slate-100 transition-colors">
+            <motion.div variants={itemVariants} className="md:col-span-5 bg-slate-50 border border-slate-200 rounded-3xl p-8 flex flex-col justify-between min-h-[320px] hover:bg-slate-100 transition-colors">
               <div className="w-12 h-12 bg-navy-dark/5 rounded-xl flex items-center justify-center mb-8">
                 <Workflow className="w-6 h-6 text-navy-dark" />
               </div>
@@ -375,10 +432,10 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   Direct structural pipelines map patient telemetry inputs cleanly back to Epic, Cerner, and mainstream third-party clinical data silos instantly.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Bento card (spans 7 cols) */}
-            <div className="md:col-span-7 bg-teal-accent text-navy-dark rounded-3xl p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between min-h-[320px]">
+            <motion.div variants={itemVariants} className="md:col-span-7 bg-teal-accent text-navy-dark rounded-3xl p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between min-h-[320px]">
               <div className="absolute bottom-0 right-0 w-48 h-48 bg-white/20 rounded-full blur-2xl" />
               
               <div className="w-12 h-12 bg-navy-dark/10 rounded-xl flex items-center justify-center mb-8">
@@ -393,15 +450,21 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   We don't believe in replacing human clinical touch. We design algorithms to filter raw background signals so clinicians can channel energy strictly into diagnosis validation and compassionate healing.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. INDUSTRIES SERVED */}
-      <section className="py-24">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-24"
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-8">
           
           <div className="text-center mb-16">
@@ -413,51 +476,63 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             
             {/* Sector 1 */}
-            <div className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
               <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-navy-dark mb-4">
                 <Building2 className="w-6 h-6" />
               </div>
               <h3 className="font-display font-semibold text-lg text-navy-dark mb-2">Hospital Networks</h3>
               <p className="font-body-md text-xs text-navy-dark/60">Optimizing workflow structures, clinical triaging, and inpatient prognosis flows.</p>
-            </div>
+            </motion.div>
 
             {/* Sector 2 */}
-            <div className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
               <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-navy-dark mb-4">
                 <Stethoscope className="w-6 h-6" />
               </div>
               <h3 className="font-display font-semibold text-lg text-navy-dark mb-2">Radiology Hubs</h3>
               <p className="font-body-md text-xs text-navy-dark/60">Automated sub-millimeter filters scanning for tissue abnormalities instantaneously.</p>
-            </div>
+            </motion.div>
 
             {/* Sector 3 */}
-            <div className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
               <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-navy-dark mb-4">
                 <Database className="w-6 h-6" />
               </div>
               <h3 className="font-display font-semibold text-lg text-navy-dark mb-2">Biotech & Trials</h3>
               <p className="font-body-md text-xs text-navy-dark/60">Sifting clinical metadata pools to isolate candidate anomalies and optimize trial design.</p>
-            </div>
+            </motion.div>
 
             {/* Sector 4 */}
-            <div className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 soft-shadow border border-navy-dark/5 text-center flex flex-col items-center">
               <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-navy-dark mb-4">
                 <Activity className="w-6 h-6" />
               </div>
               <h3 className="font-display font-semibold text-lg text-navy-dark mb-2">Telehealth Providers</h3>
               <p className="font-body-md text-xs text-navy-dark/60">Securely routing incoming wearable telemetry parameters to regional clinic dashboards.</p>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. TESTIMONIALS */}
-      <section className="py-24 bg-white border-t border-navy-dark/5">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-24 bg-white border-t border-navy-dark/5"
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-8">
           
           <div className="text-center mb-16 max-w-xl mx-auto">
@@ -469,10 +544,16 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
             
             {/* Testimonial 1 */}
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+            <motion.div variants={itemVariants} className="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="flex gap-1 text-teal-accent mb-6">
                   {/* Glowing clinical evaluation stars */}
@@ -497,10 +578,10 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   <p className="font-body-md text-xs text-navy-dark/50">Director of Radiology, Mercy Health Partners</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Testimonial 2 */}
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+            <motion.div variants={itemVariants} className="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="flex gap-1 text-teal-accent mb-6">
                   {[...Array(5)].map((_, i) => (
@@ -523,15 +604,21 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
                   <p className="font-body-md text-xs text-navy-dark/50">Chief Medical Director, Apex Health Group</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 7. CTA SECTION */}
-      <section className="py-24 relative overflow-hidden bg-navy-dark text-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="py-24 relative overflow-hidden bg-navy-dark text-white"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(0,194,168,0.15),transparent)]" />
         
         <div className="max-w-[1280px] mx-auto px-6 md:px-8 text-center relative z-10 flex flex-col items-center gap-8">
@@ -545,21 +632,25 @@ export default function Home({ setCurrentPage, setSelectedSolutionSection }: Hom
             Request an automated sandbox partition today, or request a technical discovery briefing with our senior medical informatics team.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-            <button 
+            <motion.button 
               onClick={() => setCurrentPage('contact')}
-              className="bg-teal-accent text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl hover:opacity-90 transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-teal-accent/20 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-teal-accent text-navy-dark font-display font-semibold text-sm py-4 px-8 rounded-xl hover:opacity-90 transition-all shadow-md shadow-teal-accent/20 cursor-pointer"
             >
               Request Technical Pilot Briefing
-            </button>
-            <button 
+            </motion.button>
+            <motion.button 
               onClick={() => setCurrentPage('about')}
-              className="bg-white/10 hover:bg-white/20 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] border border-white/15 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white/10 hover:bg-white/20 text-white font-display font-semibold text-sm py-4 px-8 rounded-xl transition-all border border-white/15 cursor-pointer"
             >
               Learn about our Research
-            </button>
+            </motion.button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );

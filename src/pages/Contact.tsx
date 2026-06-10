@@ -12,6 +12,26 @@ import {
 } from 'lucide-react';
 
 export default function Contact() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.05
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: 'spring', stiffness: 100, damping: 20 } 
+    }
+  };
+
   const [formData, setFormData] = useState({
     fullName: '',
     workEmail: '',
@@ -20,6 +40,8 @@ export default function Contact() {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // FAQ Accordion states
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
@@ -28,21 +50,52 @@ export default function Contact() {
     setFaqOpenIndex(faqOpenIndex === index ? null : index);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.workEmail) return;
-    
-    // Simulate high-fidelity secure REST submission
-    setIsSubmitted(true);
-    // Clear state
-    setFormData({
-      fullName: '',
-      workEmail: '',
-      organization: '',
-      role: '',
-      message: ''
-    });
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '',
+          name: formData.fullName,
+          email: formData.workEmail,
+          organization: formData.organization,
+          role: formData.role,
+          message: formData.message
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true);
+        // Clear state
+        setFormData({
+          fullName: '',
+          workEmail: '',
+          organization: '',
+          role: '',
+          message: ''
+        });
+      } else {
+        setErrorMessage(data.message || 'Submission failed. Please verify your access key or try again.');
+      }
+    } catch (err: any) {
+      setErrorMessage(err?.message || 'A network error occurred. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   const offices = [
     {
@@ -158,11 +211,18 @@ export default function Contact() {
             </div>
 
             {/* Render Office coordinates directory cards */}
-            <div className="flex flex-col gap-4">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              className="flex flex-col gap-4"
+            >
               <h3 className="font-display font-semibold text-xs uppercase tracking-wider text-navy-dark/40 px-2">Local Silos Directory</h3>
               {offices.map((off, index) => (
-                <div 
+                <motion.div 
                   key={index}
+                  variants={itemVariants}
                   className="bg-white rounded-2xl p-5 border border-slate-200 soft-shadow flex items-start gap-4"
                 >
                   <MapPin className="w-5 h-5 text-teal-accent mt-1 shrink-0" />
@@ -176,9 +236,9 @@ export default function Contact() {
                     <p className="font-body-md text-xs text-navy-dark/60 leading-relaxed mt-1">{off.address}</p>
                     <p className="font-mono text-[10px] text-navy-dark/45 mt-1.5">{off.phone}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
           </div>
 
@@ -255,13 +315,24 @@ export default function Contact() {
                       />
                     </div>
 
+                    {errorMessage && (
+                      <div className="bg-red-50 text-red-600 text-xs sm:text-sm rounded-lg p-3.5 border border-red-200 font-sans leading-relaxed">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     {/* Submit confirmation */}
-                    <button 
+                    <motion.button 
                       type="submit"
-                      className="w-full bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98]"
+                      disabled={isSubmitting}
+                      whileHover={isSubmitting ? {} : { scale: 1.02 }}
+                      whileTap={isSubmitting ? {} : { scale: 0.98 }}
+                      className={`w-full bg-navy-dark hover:bg-neutral-900 text-white font-display font-semibold text-xs uppercase tracking-wider py-4 rounded-xl shadow-md transition-colors ${
+                        isSubmitting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                      }`}
                     >
-                      Transmit Proposal Request
-                    </button>
+                      {isSubmitting ? 'Transmitting...' : 'Transmit Proposal Request'}
+                    </motion.button>
                   </motion.form>
                 ) : (
                   <motion.div 
@@ -279,12 +350,17 @@ export default function Contact() {
                         Thank you. Your consultation requirements have been logged inside our HIPAA secure partition list. Our clinical solutions group will follow up with coordinates within 1 business day.
                       </p>
                     </div>
-                    <button 
-                      onClick={() => setIsSubmitted(false)}
-                      className="mt-6 bg-slate-100 hover:bg-slate-200 text-navy-dark font-display font-semibold text-xs uppercase py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98]"
+                    <motion.button 
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setErrorMessage(null);
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="mt-6 bg-slate-100 hover:bg-slate-200 text-navy-dark font-display font-semibold text-xs uppercase py-3 px-6 rounded-lg cursor-pointer transition-colors"
                     >
                       Send Another Inquiry
-                    </button>
+                    </motion.button>
                   </motion.div>
                 )}
               </AnimatePresence>
